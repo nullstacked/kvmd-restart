@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = kvmd
+
+[Action]
+Description = Applying kvmd-restart patches...
+When = PostTransaction
+Exec = /usr/share/kvmd-restart/apply-patches.sh

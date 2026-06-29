@@ -1,0 +1,15 @@
+kvmd:
+    gpio:
+        drivers:
+            kvmd_restart_driver:
+                type: cmd
+                cmd:
+                    - /usr/bin/sudo
+                    - /usr/bin/systemctl
+                    - reboot
+        scheme:
+            kvmd_restart_btn:
+                driver: kvmd_restart_driver
+                pin: "0"
+                mode: output
+                switch: false
