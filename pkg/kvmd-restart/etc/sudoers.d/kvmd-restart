@@ -1,1 +1,0 @@
-kvmd ALL=(ALL) NOPASSWD: /usr/bin/systemctl reboot
