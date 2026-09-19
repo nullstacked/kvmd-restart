@@ -18,7 +18,7 @@ you are using to reach everything else.
 ```bash
 makepkg -si
 # Or install pre-built package:
-pacman -U kvmd-restart-1.0.0-1-any.pkg.tar.zst
+pacman -U kvmd-restart-1.0.1-1-any.pkg.tar.zst
 ```
 
 ## How it works

@@ -1,9 +1,10 @@
 :root {
+	/* 2026-09-19: tab 16 -> 28 px wide, icon 12 -> 16 px, so it is a thumb target on a phone; height unchanged so the stack spacing holds */
 	--cs-restart-bg: rgba(80,20,20,0.85);
 	--cs-restart-bg-hover: rgba(140,30,30,1);
 	--cs-restart-fg: rgba(255,255,255,0.85);
 	--cs-restart-fg-hover: rgba(255,255,255,1);
-	--cs-restart-width: 16px;
+	--cs-restart-width: 28px;
 	--cs-restart-height: 30px;
 	--cs-restart-top: 240px;  /* below OCR at 205px (30px tall) + 5px gap */
 }
@@ -40,8 +41,8 @@
 }
 
 .kvm-restart-btn svg {
-	width: 12px;
-	height: 12px;
+	width: 16px;
+	height: 16px;
 	fill: currentColor;
 	pointer-events: none;
 }
