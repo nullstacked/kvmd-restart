@@ -6,7 +6,7 @@
 	--cs-restart-fg-hover: rgba(255,255,255,1);
 	--cs-restart-width: 28px;
 	--cs-restart-height: 30px;
-	--cs-restart-top: 240px;  /* below OCR at 205px (30px tall) + 5px gap */
+	--cs-restart-top: 303px;
 }
 
 .kvm-restart-btn {
