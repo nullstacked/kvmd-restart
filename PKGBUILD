@@ -1,6 +1,6 @@
 # Maintainer: nullstacked
 pkgname=kvmd-restart
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Floating restart-PiKVM-OS button for PiKVM Web UI"
 arch=('any')
