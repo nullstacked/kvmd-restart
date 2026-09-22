@@ -6,6 +6,9 @@
 	--cs-restart-fg-hover: rgba(255,255,255,1);
 	--cs-restart-width: 28px;
 	--cs-restart-height: 30px;
+	/* Support-unit default. apply-patches.sh rewrites this to 540px on the
+	   client units, where the ladder runs down to recap at 478px and this one
+	   - the destructive button - belongs last, behind a gap. */
 	--cs-restart-top: 310px;
 }
 

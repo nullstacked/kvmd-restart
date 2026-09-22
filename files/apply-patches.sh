@@ -8,15 +8,33 @@ WEB_DIR="/usr/share/kvmd/web"
 log() { echo "[$LOG_PREFIX] $*"; }
 warn() { echo "[$LOG_PREFIX] WARNING: $*" >&2; }
 
-# Copy CSS
+# Copy CSS. Restart is the destructive button, so on the client units - where
+# the right-edge ladder runs all the way down to recap at 478px - it sits last,
+# at 540px, behind a deliberate 32px gap rather than wedged between Listen and
+# Record where it used to be (<=1.0.4). Support units have no listen/ask/recap
+# buttons, so moving it there would just leave it floating alone below a hole;
+# they keep 310px. /etc/kvmd/listen.conf is the marker for "client unit with
+# the full ladder" - bin/provision-pikvm writes it, same as for kvmd-listen.
 dest="$WEB_DIR/share/css/kvm/restart.css"
 mkdir -p "$(dirname "$dest")"
-if [ -f "$dest" ] && cmp -s "$SHARE_DIR/restart.css" "$dest"; then
+staged=$(mktemp)
+if [ -f /etc/kvmd/listen.conf ]; then
+    sed 's/--cs-restart-top: 310px;/--cs-restart-top: 540px;/' \
+        "$SHARE_DIR/restart.css" > "$staged"
+    if ! grep -q -- '--cs-restart-top: 540px;' "$staged"; then
+        warn "FAILED: could not set the client-unit restart offset in restart.css"
+        rm -f "$staged"; exit 1
+    fi
+else
+    cp "$SHARE_DIR/restart.css" "$staged"
+fi
+if [ -f "$dest" ] && cmp -s "$staged" "$dest"; then
     log "SKIPPED (unchanged): restart.css"
 else
-    cp "$SHARE_DIR/restart.css" "$dest"
+    cp "$staged" "$dest"
     log "PATCHED: restart.css"
 fi
+rm -f "$staged"
 
 # Patch index.html + session.js via Python
 python3 <<'PYEOF'
